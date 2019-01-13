@@ -1,0 +1,65 @@
+\documentclass[a4paper]{lean_cv} % a4paper for A4 -- letterpaper for letter paper size
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%---------------------------------------------------------------------------------------
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{} 
+
+%\profilepic{profile_pic} % the profile image 
+\initials{X.Y.}
+\cvname{Procide Name} % Your name
+\cvjobtitle{Job description \\ \& Title} % Job
+\cvpic{} % set profile pic path for profile pic instead of initials
+\manifesto{A four to five personal manifesto lines here ... } % personal description 
+\cvgithub{}
+\cvnumberphone{000000} % Phone number 
+\cvsite{website link} % Personal web site
+\cvmail{mail@mail.com} % Email addresst
+\cvlinkedin{/linkedin\_id} 
+%TODO: add address, skype and get a more accurate positioning and smaller icons ...
+
+% provided technical skills --> provide in ascending order
+\hboxes{
+	{Skill $\textbullet$ Skill / 4},
+	{Skill $\textbullet$ Skill $\textbullet$ Skill / 3},
+	{Skill $\textbullet$ Skill $\textbullet$ Skill $\textbullet$  Skill/ 4},
+	{Skill $\textbullet$ Skill $\textbullet$ Skill / 3},
+	{Skill $\textbullet$ Skill $\textbullet$ Skill $\textbullet$ Skill / 4},
+	{Skill $\textbullet$ Skill $\textbullet$ Skill / 4}}
+
+
+%provide fields of interest
+
+\cubeviz{interest 1}{interest 2}{interest 3}{interest 4}{interest 5}{interest 6}{1/2/3/4/5/6} % FIXME: the score here should be parametric
+
+%provide the languages that you are familiar with in the ILR (Interagency Language Roundtable) scale (1 .. 5)
+\vboxes{
+	{French / 1},  
+	{English / 4},
+	{Mother Language / 5}}
+
+%\cvpic{profile_pic} FIXME: this should provide a scalable grid
+\infogrid{{tennising/tennis_clipart.png}, {cycling/cycling_clipart.png}, {swimming/swimming_clipart.png}}
+
+\experience{
+{Starting/ending/Organization info/Job title/Description},
+{Starting/ending/Organization info/Job title/Description},
+{Starting/ending/Organization info/Job title/Description},
+{Starting/ending/Organization info/Job title/Description}} % the brackets have to be like this! do not break line after the last record
+
+\education{{Starting/ending/University/Degree/Info},
+{Starting/ending/University/Degree/Info}} 
+
+\certsawards{
+{Mon. Year/Certification/Provider},
+{Mon. Year/Certification/Provider},
+{Mon. Year/Certification/Provider}} 
+
+
+%TODO: find a design when page is running sort in space
+
+\begin{document}
+	\makeheader % generates the header
+	\makesidebar % generates the personal information sidebar
+	\makebody  % generates the main information 
+\end{document}

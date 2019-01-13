@@ -1,0 +1,213 @@
+% nice cv visualizations package
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{visualisations}[2019/01/04 custom visualisations package]
+
+% ====================== Package Definitions =====================
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+% ================End of Package Definitions =====================
+
+% ====================== Cube Visualization definition =====================
+
+
+\newcommand{\cubeviz}[7]{
+	\renewcommand{\cubeviz}{
+		\begin{tikzpicture}[every node/.style={minimum size=1cm},on grid]
+
+			%first cube
+			\begin{scope}[every node/.append style={yslant=-0.5},yslant=-0.5]
+				\draw [fill=gray, fill opacity = 0.6, draw=gray] (0,0) rectangle (0.5,0.5);
+			\end{scope}
+			\begin{scope}[every node/.append style={yslant=0.5},yslant=0.5]
+				\draw [fill=gray, fill opacity = 0.6, draw=gray] (0.5,-0.5) rectangle (1,0);
+			\end{scope}
+			\begin{scope}[every node/.append style={
+				yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
+			]
+				\draw [fill=gray, fill opacity = 0.6, draw=gray] (0.5,0) rectangle (1,0.5);
+			\end{scope}
+
+			%second cube
+			\begin{scope}[every node/.append style={yslant=-0.5},yslant=-0.5]
+				\draw [fill=gray, fill opacity = 0.4, draw=gray] (-0.5,-0.5) rectangle (0.5,0.5);
+			\end{scope}
+			\begin{scope}[every node/.append style={yslant=0.5},yslant=0.5]
+				%\draw (-0.25,-0.25) rectangle (0.75,0.75);
+				\draw [fill=gray, fill opacity = 0.4, draw=gray] (0.5,-1.0) rectangle (1.5,0.0);
+			\end{scope}
+			\begin{scope}[every node/.append style={
+				yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
+			]
+				\draw [fill=gray, fill opacity = 0.4, draw=gray] (0.5,0) rectangle (1.5, 1);
+			\end{scope}
+
+			%third cube
+			\begin{scope}[every node/.append style={yslant=-0.5},yslant=-0.5]
+				\draw [fill=gray, fill opacity = 0.2, draw=gray] (-1.0,-1.0) rectangle (0.5,0.5);
+			\end{scope}
+			\begin{scope}[every node/.append style={yslant=0.5},yslant=0.5]
+				\draw [fill=gray, fill opacity = 0.2, draw=gray] (0.5,-1.5) rectangle (2.0,0.0);
+			\end{scope}
+			\begin{scope}[every node/.append style={
+				yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
+			]
+				\draw [fill=gray, fill opacity = 0.2, draw=gray] (0.5,0) rectangle (2.0, 1.5);
+			\end{scope}
+
+			%fourth cube
+			\begin{scope}[every node/.append style={yslant=-0.5},yslant=-0.5]
+				\draw [fill=gray, fill opacity = 0.1, draw=gray] (-1.5, -1.5) rectangle (0.5,0.5);
+			\end{scope}
+			\begin{scope}[every node/.append style={yslant=0.5},yslant=0.5]
+				\draw [fill=gray, fill opacity = 0.1, draw=gray] (0.5,-2.0) rectangle (2.5, 0.0);
+			\end{scope}
+			\begin{scope}[every node/.append style={
+				yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
+			]
+				\draw [fill=gray, fill opacity = 0.1, draw=gray] (0.5,0) rectangle (2.5, 2.0);
+			\end{scope}
+
+			%TODO: the following should be defiend as parameters 
+			%FIXME: the following is pending !!!!
+				% the area is still pending ... 
+
+			% add the discipline axes
+			\draw[dashed, ->,thin] (0.5,0.25)-- (2.8, 1.4) node[right]
+			{#1}; %SE
+			\draw[dashed, ->,thin] (0.5,0.25)--(0.5, 2.6) node[right]
+			{#2}; %automation
+			\draw[dashed, ->,thin] (0.5,0.25)--(-2, 1.5) node[right]
+			{#3}; %UX
+			\draw[dashed, ->,thin] (0.5,0.25)--(-1.7, -0.85) node[right]
+			{#4}; %algorithms
+			\draw[dashed, ->,thin] (0.5,0.25)--(0.5, -2.2) node[right]
+			{#5}; %optimization
+			\draw[dashed, ->,thin] (0.5,0.25)--(2.6, -0.8) node[right]
+			{#6}; %AI
+
+			% Hint: the axes equations are the following
+			%clockwise starting from the positive y axes
+			%	(0.5,2.3) --> x = 0.5
+			%	(2.8, 1.4) --> y = 0.5x
+			%	(2.6,-0.8) --> y = 0.5x + 0.5
+			%	(0.5, -2.2) --> x = 0.5
+			%	(-1.7, -0.85) --> y = 0.5x
+			%	(-2,1.5) -->  y = 0.5.x + 0.5
+
+			% now we should get the power of interest of each area
+			
+			%FIXME: here we should implemet a way to utilized the 7th argument to plot based on persentages ...
+
+			\draw[fill=gray, opacity=0.4] (0.5,2.0) -- (2.4, 1.2) -- (2.0,-0.5) -- (0.5, -1.3) -- (-0.8, -0.4) -- (-0.6,0.8) -- cycle;
+			
+		\end{tikzpicture}
+	}
+}
+
+% ===========================================
+
+% ====================== Unary skill indicators =====================
+\newcommand\vskilllevel[2]{%%
+
+	\hspace{10mm}
+	{\large #1}
+	\hspace{4mm}
+	\begin{tikzpicture}
+	\foreach \Val in {1,2, ..., 5}
+		{
+			\node[fill=custom_grey, inner ysep=0pt] at ([yshift=2*\Val]0,\Val pt) {};
+		}
+		\foreach \Val in {1,...,#2}
+		{
+			\node[fill=black, inner ysep=0pt] at ([yshift=2*\Val]0,\Val pt) {};
+		}
+	\end{tikzpicture}%
+	\vspace{3mm}
+
+}
+
+\newcommand{\hskilllevel}[2]{
+	
+	\hspace{8mm}
+	{\large #1} % the first argument should be the skill itself
+
+	\hspace{9mm}
+		\begin{tikzpicture}
+			\draw[draw=black] (1.1,5.5) rectangle ++(0.2,0.2);
+			\foreach \d in {1, 2, ..., 5} {
+				\draw[draw=black] (\d.1,5.5) rectangle ++(0.3,0.3);
+			}
+			\foreach \d in {1, 2, ..., #2} { % the second argument should be the skill level
+				\draw[fill=black] (\d.1,5.5) rectangle ++(0.3,0.3);
+			}
+		\end{tikzpicture}
+		\vspace{1mm}
+
+}
+
+% ================ Grouped skill indicator structures ================
+\newcommand{\hboxes}[1]{
+	\renewcommand{\hboxes}{
+		\begin{tikzpicture}
+			\foreach [count=\i] \x/\y in {#1}{
+				\foreach \d in {1, 2, ..., 5} { % the empty boxes
+				\draw[draw=black] (\d, \i+5.5) rectangle ++(0.3,0.3);
+				}
+				\foreach \d in {1, 2, ..., \y} { % the filled boxes 
+				\draw[fill=black] (\d, \i+5.5) rectangle ++(0.3,0.3);
+				}
+				\node [above right] at (0.6,\i+5.9) {\x}; % the skill
+				}
+			\end{tikzpicture}
+			}
+			}
+			
+%FIXME: foreach does not work for values less than 2 --> in case of zero it returns 2 vertical lines
+\newcommand{\vboxes}[1]{
+	\renewcommand{\vboxes}{
+		\begin{tikzpicture}
+				\foreach [count=\i] \x/\y in {#1}{
+					%{\large \x}
+					%\foreach \d in {1, 2, ..., 5} { % the empty boxes
+					%\draw[fill=white] (0.5*\d, \i+5.5) rectangle ++(0.1,0.3);
+					%}
+					\foreach \d in {1, ..., \y} { % the filled boxes 
+						\draw[fill=black] (0.5*\d, \i+5.5) rectangle ++(0.1,0.3);
+					}
+					\node [left] at (0,\i+5.65) {\x}; % the language
+			}
+		\end{tikzpicture}
+	}
+}
+
+
+\newcommand\progressbar[1]{
+	\renewcommand{\progressbar}{
+		\begin{tikzpicture}
+			\foreach [count=\i] \x/\y in {#1}{
+				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
+				\node [above right] at (0,\i+0.35) {\x};
+			}
+		\end{tikzpicture}
+	}
+}
+
+
+
+% TODO: this is not complete yet --> need some extra info to be parametric
+\newcommand{\infogrid}[1]{
+	\renewcommand{\infogrid}{
+		\begin{tikzpicture}
+			\foreach [count=\i] \x/\y in {#1}{
+				\node at (2*\i,0) {\includegraphics[width=0.9cm]{\y}};
+				\node[right] at (2*\i-0.6, -0.75) {\x};
+			}
+		\end{tikzpicture}
+	}
+}
+
+
+
+%FIXME: cubecviz should be parametric to the axes and to contribute with the volume here ... 

@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not this fileslean_cv.cls
+!visualizations.sty
+!template.tex
+!timeline.sty
+!.gitignore

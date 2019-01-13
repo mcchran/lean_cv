@@ -1,0 +1,104 @@
+% the following package offers the ability to generate rich timelines ... 
+% the overall cv package
+
+%FIXME: the package should be updated to provide just one timeline ... FIXME: find a way to wrap the timeline ...
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{timeline}[2019/01/04 custom timeline package]
+
+%===================== Packgaes that we build on top ============================
+\RequirePackage{array,booktabs}
+\RequirePackage{tikz}
+\RequirePackage{tabularx}
+
+%================================================================================
+
+%timeline header highlighter
+\newcommand{\timebullet}{\color{custom_grey}\makebox[0pt]{\color{black} \textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}}
+
+\newcommand{\bodyheader}[1]{
+	\multicolumn{2}{l}{\hspace{22mm} 
+	\begin{tikzpicture}
+		\draw[fill=black] (1.1,5.5) rectangle ++(0.3,0.3); %TODO: rectangle should be updated to an image indicating the content
+	\end{tikzpicture}
+	\hspace{4mm}
+	\Large \textbf{#1}} \\
+}
+
+\newcommand{\timerecord}[5]{ % arguments: starts, ends, descrition, short description ...
+		{\small #1 - \newline #2} &  {{\large \textbf{#3}} \newline {\normalsize \textcolor{custom_grey}{#4}} \newline {\small \textcolor{black}{#5}}} \\
+}
+
+\newcommand{\experience}[1]{
+	\renewcommand{\experience}{
+		\begin{table}
+			\tabcolsep = 12.0pt % this columns spacing
+			\renewcommand{\arraystretch}{1.8} % this row spacing
+
+			\def\tabledata{}% reset \tabledata
+			\foreach \starting/\ending/\organization/\position/\description in {#1} {% build table data from #1
+				\ifthenelse{\equal{\organization}{}} % in case of specaial word heading ... we got a header!
+				{
+					\protected@xappto\tabledata{\timerecord{\starting}{\ending}{\organization}{\position}{\description}} 
+				}
+				{ % else we have a normal timerecord
+					\protected@xappto\tabledata{\timerecord{\starting}{\ending}{\organization}{\position}{\description}} 
+				}
+			}%
+
+			\begin{tabular}{>{\raggedright\arraybackslash}p{2cm} < {\hskip 2pt} !{\timebullet} >{\raggedright\arraybackslash}p{10cm}}
+				%\toprule
+				\addlinespace[1.5ex]
+				\bodyheader{Working experience}
+				\tabledata % Here we have the the dynamic created data ... 
+			\end{tabular}
+		\end{table}
+	}
+}
+
+
+\newcommand{\education}[1]{
+	\renewcommand{\education}{
+		\begin{table}
+			\tabcolsep = 12.0pt % this columns spacing
+			\renewcommand{\arraystretch}{1.8} % this row spacing
+
+			\def\tabledata{}% reset \tabledata
+			\foreach \starting/\ending/\organization/\position/\description in {#1} {% build table data from #1
+				\protected@xappto\tabledata{\timerecord{\starting}{\ending}{\organization}{\position}{\description}} 
+			}%
+
+			\begin{tabular}{>{\raggedright\arraybackslash}p{2cm} < {\hskip 2pt} !{\timebullet} >{\raggedright\arraybackslash}p{10cm}}
+				\bodyheader{Education}
+				\tabledata % Here we have the the dynamic created data ... 
+			\end{tabular}
+		\end{table}
+	}
+}
+
+\newcommand{\shoretertimerecord}[3]{ % arguments: starts, ends, descrition, short description ...
+		{\small #1} & {{\large \textbf{#2}} \newline {\normalsize \textcolor{custom_grey}{#3}}} \\
+}
+
+
+\newcommand{\certsawards}[1]{
+	\renewcommand{\certsawards}{
+		\begin{table}
+			\tabcolsep = 12.0pt % this columns spacing
+			\renewcommand{\arraystretch}{1.4} % this row spacing
+
+			\def\tabledata{}% reset \tabledata
+			\foreach \when/\what/\who in {#1} {% build table data from #1
+				\protected@xappto\tabledata{\shoretertimerecord{\when}{\what}{\who}} 
+			}%
+
+			\begin{tabular}{>{\raggedright\arraybackslash}p{2cm} < {\hskip 2pt} !{\timebullet} >{\raggedright\arraybackslash}p{10cm}}
+				%\toprule
+
+				\addlinespace[1.5ex]
+				\bodyheader {Certifications \& Awards}
+				\tabledata % Here we have the the dynamic created data ... 
+			\end{tabular}
+		\end{table}
+	}
+}
