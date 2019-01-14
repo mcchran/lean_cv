@@ -3,6 +3,7 @@
 
 # But not this fileslean_cv.cls
 !visualizations.sty
+!lean_cv.cls
 !template.tex
 !timeline.sty
 !.gitignore
