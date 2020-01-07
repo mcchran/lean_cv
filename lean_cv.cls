@@ -362,6 +362,13 @@
 		\end{itemize}
 		\experience
 		\education
-		\certsawards
+        \certsawards
+        \publications
 	\end{textblock}
-	}
+    }
+\renewcommand{\refname}{\small Major Bibliographic Contributions}
+\newcommand{\publications}{
+        \nocite{*}
+        {\small \bibliography{pubs}}
+        \bibliographystyle{ieeetr}
+    }
