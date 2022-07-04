@@ -2,9 +2,9 @@
 \LoadClass{article}
 \NeedsTeXFormat{LaTeX2e}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	 REQUIRED PACKAGES
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[sfdefault]{ClearSans}
@@ -12,7 +12,7 @@
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline[linecolor=white]{->}(#1,0)\endpspicture}
 \RequirePackage{pstricks}
 \defaultfontfeatures{
-		Path = /usr/local/texlive/2016/texmf-dist/fonts/opentype/public/fontawesome/ }
+		Path = /usr/local/texlive/2021/texmf-dist/fonts/opentype/public/fontawesome/ }
 \RequirePackage{fontawesome}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
@@ -63,9 +63,9 @@
 % ===== custom packages included ======
 \RequirePackage{visualizations}
 \RequirePackage{timeline}
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	 COLOURS
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
@@ -124,9 +124,9 @@
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	 MISC CONFIGURATIONS
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 % \renewcommand{\bfseries}{\color{black}} % Make \textbf produce coloured text instead
 
@@ -136,15 +136,10 @@
 
 \DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n} % declare alphabet for caligraphy
 
-
-
-% page colored margins
-% TODO:
-
-
-% --------------------------------------------------------------------------------------
+% -------------------------------------------------------------------------------
 % 	FONTS
-%-------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+
 \newfontfamily\headingfont[Path = fonts/]{segoeuib.ttf} %TODO: add the microsoft font here
 
 
@@ -152,10 +147,11 @@
 %%% ==> Hint: A4 dimensions:  width: 21.0, height: 29.7
 %--------
 
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	TOPBAR DEFINTIONS
 %	Here are placed all the new commands to host topbar information
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+
 \setlength{\TPHorizModule}{2cm} % Left margin
 \setlength{\TPVertModule}{2cm} % Top margin
 
@@ -206,9 +202,10 @@
 % Command for printing the contact information icons
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	TOPBAR LAYOUT
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+
 \newcommand{\makeheader}{
 	%\begin{tikzpicture}[remember picture, overlay]
 	%	\node [rectangle, fill=topcolor, anchor=north east, minimum width=\paperwidth+5cm, minimum height=4cm] (box) at (21 cm, 5cm){
@@ -256,9 +253,10 @@
 	}
 }
 
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	SIDEBAR LAYOUT
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+
 \newcommand{\makesidebar}{
 	%\begin{tikzpicture}[remember picture, overlay]
 	%	\node [rectangle, fill=microsoft_blue, anchor=north, minimum width=10cm, minimum height=\paperheight+1cm] (box) at (0cm, 10cm){};
@@ -339,9 +337,9 @@
 }
 
 
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	MAIN BODY DEFINTIONS
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 
 \newcommand {\manifesto}[1] {\renewcommand{\manifesto}{#1}}
 
@@ -349,9 +347,10 @@
 %TODO: ==> education should be loaded from a source file in list format as well
 %TODO: ==> Awards and certifications
 
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
 %	MAIN BODY LAYOUT
-%-----------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+
 \setlength{\TPHorizModule}{1cm} % defining the units of horizontal positioning system
 
 \newcommand{\makebody}{
