@@ -12,7 +12,7 @@
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline[linecolor=white]{->}(#1,0)\endpspicture}
 \RequirePackage{pstricks}
 \defaultfontfeatures{
-		Path = /usr/local/texlive/2021/texmf-dist/fonts/opentype/public/fontawesome/ }
+		Path = /usr/local/texlive/2022basic/texmf-dist/fonts/opentype/public/fontawesome/ }
 \RequirePackage{fontawesome}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
@@ -362,11 +362,18 @@
 		\experience
 		\education
         \certsawards
-        \publications
+	\end{textblock}
+	~\newpage
+	\begin{textblock}{12}(0.6, 1.8)
+		\teaching
+        % \publications
 	\end{textblock}
     }
+
+
 \renewcommand{\refname}{\small Major Bibliographic Contributions}
 \newcommand{\publications}{
+		\newpage
         \nocite{*}
         {\small \bibliography{pubs}}
         \bibliographystyle{ieeetr}

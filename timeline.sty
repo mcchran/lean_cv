@@ -102,3 +102,25 @@
 		\end{table}
 	}
 }
+
+\newcommand{\teaching}[1]{
+	\renewcommand{\teaching}{
+		\begin{table}
+			\tabcolsep = 12.0pt % this columns spacing
+			\renewcommand{\arraystretch}{1.4} % this row spacing
+
+			\def\tabledata{}% reset \tabledata
+			\foreach \when/\what/\who in {#1} {% build table data from #1
+				\protected@xappto\tabledata{\shoretertimerecord{\when}{\what}{\who}} 
+			}%
+
+			\begin{tabular}{>{\raggedright\arraybackslash}p{2cm} < {\hskip 2pt} !{\timebullet} >{\raggedright\arraybackslash}p{10cm}}
+				%\toprule
+
+				\addlinespace[1.5ex]
+				\bodyheader {Teaching Experience}
+				\tabledata % Here we have the the dynamic created data ... 
+			\end{tabular}
+		\end{table}
+	}
+}
